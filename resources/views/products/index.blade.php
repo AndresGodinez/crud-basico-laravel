@@ -31,9 +31,13 @@
 						</a>
 					</td>
 					<td>
-						<a href="{{ route('products.destroy', [$product->id]) }}" class="btn btn-danger">
-							Eliminar
-						</a>
+						<form action="{{ route('products.destroy', $product->id) }}" method="POST">
+
+							{{csrf_field()}}
+							<input type="hidden" name="_method" value="DELETE">
+							<button class="btn btn-danger">Eliminar</button>
+							
+						</form>
 					</td>
 					
 				</tr>
