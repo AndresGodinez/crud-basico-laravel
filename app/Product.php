@@ -10,4 +10,5 @@ class Product extends Model
         'name', 'short', 'body', 'phone'
     ];
 //test ssh key
+// testing on vagrant ssh key
 }
