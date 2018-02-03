@@ -4,7 +4,7 @@
 	
 	<div class="col-md-8">
 		<a href="{{ route('products.create') }}" class="btn btn-info float-md-rigth">Nuevo producto</a>
-
+@include('products.fragments.info')
 		<table class="table-hover table-striped">
 			<thead>
 				<tr>
@@ -26,7 +26,7 @@
 						</a>
 					</td>
 					<td>
-						<a href="{{ route('products.edit', [$product->id]) }}" class="btn btn-primary">
+						<a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary">
 							Actualizar
 						</a>
 					</td>
@@ -50,7 +50,7 @@
 
 	</div>
 	<div class="col-md-4">
-		Mensajes
+		@include('products.fragments.aside')
 	</div>
 </div>
 @endsection

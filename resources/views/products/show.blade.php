@@ -22,7 +22,7 @@
 
 	</div>
 	<div class="col-md-4">
-		Mensajes
+		@include('products.fragments.aside')
 	</div>
 </div>
 @endsection
