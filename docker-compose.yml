@@ -1,0 +1,45 @@
+version: '3'
+services:
+  app:
+    build:
+      context: ./docker/app
+      dockerfile: Dockerfile
+    volumes:
+     - .:/var/www/html
+    ports:
+     - "${APP_PORT}:80"
+    networks:
+     - aGoNetwork
+  node:
+    image: node:9.8
+    volumes:
+     - .:/var/www/html
+    networks:
+     - aGoNetwork
+  mysql:
+    image: mysql:5.7
+    ports:
+     - "${DB_PORT}:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      MYSQL_DATABASE: "${MYSQL_DATABASE}"
+      MYSQL_USER: "${MYSQL_USER}"
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+    volumes:
+     - mysqldata:/var/lib/mysql
+    networks:
+     - aGoNetwork
+  redis:
+    image: redis:alpine
+    volumes:
+     - redisdata:/data
+    networks:
+     - aGoNetwork
+networks:
+  aGoNetwork:
+    driver: "bridge"
+volumes:
+  mysqldata:
+    driver: "local"
+  redisdata:
+    driver: "local"
